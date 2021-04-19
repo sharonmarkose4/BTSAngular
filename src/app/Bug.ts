@@ -20,7 +20,7 @@ export class Bug{
   synopsis:string;
   description:string;
   priority:Priority;
-  status: Status;
+  status:Status;
   type:TypeEnum;
   severity:Severity;
   buildVersion:string;
