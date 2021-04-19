@@ -1,35 +1,62 @@
-<input [(ngModel)]='bug.name' type="text" placeholder="Name"><br>
-<input [(ngModel)]='bug.product' type="text" placeholder="Product"><br>
-<input [(ngModel)]='bug.module' type="text" placeholder="Module"><br>
-<input [(ngModel)]='bug.projectId' type="text" placeholder="Project Id"><br>
-<input [(ngModel)]='bug.synopsis' type="text" placeholder="Synopsis"><br>
-<input [(ngModel)]='bug.description' type="text" placeholder="Description"><br>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="jumbotron">
+<div class="row">
+<div class="col">
+<label>Name*</label><br>
+<input [(ngModel)]='bug.name' type="text"><br>
+<label>Product*</label><br>
+<input [(ngModel)]='bug.product' type="text"><br>
+<label>Module*</label><br>
+<input [(ngModel)]='bug.module' type="text"><br>
+<label>Project Id*</label><br>
+<input [(ngModel)]='bug.projectId' type="text"><br>
+<label>Synopsis*</label><br>
+<input [(ngModel)]='bug.synopsis' type="text"><br>
+</div>
+<div class="col">
+<label>Description*</label><br>
+<input [(ngModel)]='bug.description' type="text" ><br>
+<label>Status*</label><br>
 <select id="status" [(ngModel)]='bug.status'>
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
-</select>
+</select><br>
+<label>Priority*</label><br>
 <select id="priority" [(ngModel)]='bug.priority'>
   <option *ngFor="let value of priorityValues " [value]="value">{{value}}</option>
-</select>
+</select><br>
+<label>Type</label><br>
 <select id="type" [(ngModel)]='bug.type'>
   <option *ngFor="let value of typeValues " [value]="value">{{value}}</option>
-</select>
+</select><br>
+<label>Severity</label><br>
 <select id="severity" [(ngModel)]='bug.severity'>
   <option *ngFor="let value of severityValues " [value]="value">{{value}}</option>
-</select><br>
-<input [(ngModel)]='bug.developerId' type="number" placeholder="Developer Id"><br>
-<input [(ngModel)]='bug.testerId' type="number" placeholder="Tester Id"><br>
-<input [(ngModel)]='bug.etaDate' type="date" placeholder="Eta"><br>
-<input [(ngModel)]='bug.buildVersion' type="text" placeholder="Build Version"><br>
-<button (click)='save()'>Save</button>
-<table *ngIf bugArray.length>
+</select> <br>
+</div>
+<div class="col">
+<label>Developer Id</label><br>
+<input [(ngModel)]='bug.developerId' type="number"><br>
+<label>Tester Id</label><br>
+<input [(ngModel)]='bug.testerId' type="number"><br>
+<label>Eta</label><br>
+<input [(ngModel)]='bug.etaDate' type="date" ><br>
+<label>Build Version</label><br>
+<input [(ngModel)]='bug.buildVersion' type="text"><br>
+<button (click)='save()' class="btn btn-primary">Save</button>
+</div>
+</div>
+<table>
   <thead>
-  <th>Name</th>
+  <th>Name <input [(ngModel)]='bug.inputName'> <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button></th>
   <th>Product</th>
   <th>Module</th>
   <th>ProjectId</th>
   <th>Synopsis</th>
   <th>Description</th>
-  <th>Status</th>
+  <th>Status <select id="status" [(ngModel)]='bug.inputStatus'>
+    <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
+  </select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-info"> Search</button></th>
   <th>Priority</th>
   <th>Severity</th>
   <th>Type</th>
@@ -39,7 +66,7 @@
   <th>EtaDate
   <th>SubmittedOn</th>
 </thead>
-<tbody><td>{{bug.name}}</td>
+<tbody>
   <tr *ngFor ='let bug of bugArray'>
     <td>{{bug.name}}</td>
     <td>{{bug.product}}</td>
@@ -59,3 +86,4 @@
   </tr>
 </tbody>
 </table>
+</div>

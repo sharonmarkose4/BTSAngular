@@ -13,12 +13,26 @@ import { Severity  } from '../Bug';
 })
 export class BugFormComponent implements OnInit {
   bug:Bug=new Bug();
-  bugArray:Bug[]=[];
-  statusValues=Object.values(Status);
-  priorityValues=Object.values(Priority);
-  typeValues=Object.values(TypeEnum);
-  severityValues=Object.values(Severity);
+  bugArray:any;
+  statusValues=Object.values(Status).filter(x => typeof x==="string");
+  priorityValues=Object.values(Priority).filter(x => typeof x==="string");;
+  typeValues=Object.values(TypeEnum).filter(x => typeof x==="string");;
+  severityValues=Object.values(Severity).filter(x => typeof x==="string");;
   constructor(private bugService: BugService) { }
+  getByName(name:string){
+    const observable=this.bugService.getByName(name);
+    observable.subscribe(response => {
+      console.log(response);
+      this.bugArray=response;
+    })
+  }
+  getByStatus(status:Status){
+    const observable=this.bugService.getByStatus(status);
+    observable.subscribe(response => {
+      console.log(response);
+      this.bugArray=response;
+    })
+  }
   save(){
     const promise=this.bugService.save(this.bug);
     promise.subscribe(response=>{
@@ -33,7 +47,12 @@ export class BugFormComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.bugService.getAllUsers();
+    const observable=this.bugService.getAllBugs();
+    observable.subscribe(response =>{
+      console.log(response);
+      this.bugArray=response;
+    })
+
   }
 
 }

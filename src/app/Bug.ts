@@ -14,8 +14,8 @@ export enum Severity{
 }
 export class Bug{
   name:string='Bug 1';
-  product:string;
-  module:string;
+  product:string='Product A';
+  module:string='Module A';
   projectId:string;
   synopsis:string;
   description:string;
@@ -28,5 +28,7 @@ export class Bug{
   testerId:number;
   etaDate:Date;
   submittedOn:Date=new Date();
+  inputName:string;
+  inputStatus:Status;
 }
 
