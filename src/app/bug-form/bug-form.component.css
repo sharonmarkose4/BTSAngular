@@ -14,3 +14,7 @@ tr:nth-child(odd){
 tr, td :hover{
 background-color:lightskyblue;
 }
+#save{
+  height: 50px;
+  width: 100px;
+}
