@@ -17,13 +17,13 @@ export class Bug{
   product:string='Product A';
   module:string='Module A';
   projectId:string="Project id";
-  synopsis:string="This is information about bug";
-  description:string='Bug details';
+  synopsis:string="";
+  description:string='';
   priority:Priority
   status:Status
   type:TypeEnum
   severity:Severity
-  buildVersion:string="Version A";
+  buildVersion:string="";
   developerId:number;
   testerId:number;
   etaDate:Date;

@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes=[
  {path: '',component: BugFormComponent},
  {path: 'search',component: SearchbugComponent},
+ {path: 'update',component: BugFormComponent},
 ]
 @NgModule({
   declarations: [
