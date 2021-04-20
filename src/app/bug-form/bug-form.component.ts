@@ -19,20 +19,6 @@ export class BugFormComponent implements OnInit {
   typeValues=Object.values(TypeEnum).filter(x => typeof x==="string");;
   severityValues=Object.values(Severity).filter(x => typeof x==="string");;
   constructor(private bugService: BugService) { }
-  getByName(name:string){
-    const observable=this.bugService.getByName(name);
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugArray=response;
-    })
-  }
-  getByStatus(status:Status){
-    const observable=this.bugService.getByStatus(status);
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugArray=response;
-    })
-  }
   save(){
     const promise=this.bugService.save(this.bug);
     promise.subscribe(response=>{
@@ -47,12 +33,6 @@ export class BugFormComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    const observable=this.bugService.getAllBugs();
-    observable.subscribe(response =>{
-      console.log(response);
-      this.bugArray=response;
-    })
-
-  }
+      }
 
 }

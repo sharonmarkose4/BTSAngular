@@ -1,0 +1,48 @@
+<body class="jumbotron">
+<label>Search by Name</label><br>
+<input [(ngModel)]='bug.inputName'  class="form-control-sm"> <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button>
+<br>
+<label>Search by Status</label><br>
+<select id="status" [(ngModel)]='bug.inputStatus' class="form-control-sm">
+  <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
+</select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-info"> Search</button>
+<h3>BUG INFORMATION</h3>
+<table>
+  <thead>
+  <th>Name</th>
+  <th>Product</th>
+  <th>Module</th>
+  <th>ProjectId</th>
+  <th>Synopsis</th>
+  <th>Description</th>
+  <th>Status </th>
+  <th>Priority</th>
+  <th>Severity</th>
+  <th>Type</th>
+  <th>BuildVersion</th>
+  <th>DeveloperId</th>
+  <th>TesterId</th>
+  <th>EtaDate
+  <th>SubmittedOn</th>
+</thead>
+<tbody>
+  <tr *ngFor ='let bug of bugArray'>
+    <td>{{bug.name}}</td>
+    <td>{{bug.product}}</td>
+    <td>{{bug.module}}</td>
+    <td>{{bug.projectId}}</td>
+    <td>{{bug.synopsis}}</td>
+    <td>{{bug.description}}</td>
+    <td>{{bug.status}}</td>
+    <td>{{bug.priority}}</td>
+    <td>{{bug.severity}}</td>
+    <td>{{bug.type}}</td>
+    <td>{{bug.buildVersion}}</td>
+    <td>{{bug.developerId}}</td>
+    <td>{{bug.testerId}}</td>
+    <td>{{bug.etaDate | date:'M/d/YY'}}</td>
+    <td>{{bug.submittedOn | date:'M/d/YY'}}</td>
+  </tr>
+</tbody>
+</table>
+</body>

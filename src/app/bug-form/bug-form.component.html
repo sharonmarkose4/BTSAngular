@@ -1,32 +1,30 @@
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <div class="jumbotron">
 <div class="row">
 <div class="col">
 <label>Name*</label><br>
-<input [(ngModel)]='bug.name' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.name' name="name" #name='ngModel' type="text" class="form-control-sm" required maxlength="15"><br>
 <label>Product*</label><br>
-<input [(ngModel)]='bug.product' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.product' type="text" class="form-control-sm" required maxlength="15"><br>
 <label>Module*</label><br>
-<input [(ngModel)]='bug.module' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.module' type="text" class="form-control-sm" required maxlength="15" ><br>
 <label>Project Id*</label><br>
-<input [(ngModel)]='bug.projectId' type="text " class="form-control-sm" ><br>
+<input [(ngModel)]='bug.projectId' type="text " class="form-control-sm" required  maxlength="15"><br>
 <label>Synopsis*</label><br>
-<input [(ngModel)]='bug.synopsis' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.synopsis' type="text" class="form-control-sm" required maxlength="15"><br>
 </div>
 <div class="col">
 <label>Description*</label><br>
-<input [(ngModel)]='bug.description' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.description' type="text" class="form-control-sm" required maxlength="200" minlength="10"><br>
 <label>Status*</label><br>
-<select id="status" [(ngModel)]='bug.status' class="form-control-sm">
+<select id="status" [(ngModel)]='bug.status' class="form-control-sm" required>
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
 </select><br>
 <label>Priority*</label><br>
-<select id="priority" [(ngModel)]='bug.priority' class="form-control-sm">
+<select id="priority" [(ngModel)]='bug.priority' class="form-control-sm" required>
   <option *ngFor="let value of priorityValues " [value]="value">{{value}}</option>
 </select><br>
 <label>Type</label><br>
-<select id="type" [(ngModel)]='bug.type' class="form-control-sm">
+<select id="type" [(ngModel)]='bug.type' class="form-control-sm" minlength>
   <option *ngFor="let value of typeValues " [value]="value">{{value}}</option>
 </select><br>
 <label>Severity</label><br>
@@ -42,50 +40,15 @@
 <label>Eta</label><br>
 <input [(ngModel)]='bug.etaDate' type="date" class="form-control-sm"><br>
 <label>Build Version</label><br>
-<input [(ngModel)]='bug.buildVersion' type="text" class="form-control-sm"><br>
+<input [(ngModel)]='bug.buildVersion' type="text" class="form-control-sm" maxlength="15"><br>
 <button (click)='save()' class="btn btn-primary" id="save">Save</button>
 </div>
 </div>
-<div>
-<table>
-  <thead>
-  <th>Name <input [(ngModel)]='bug.inputName'> <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button></th>
-  <th>Product</th>
-  <th>Module</th>
-  <th>ProjectId</th>
-  <th>Synopsis</th>
-  <th>Description</th>
-  <th>Status <select id="status" [(ngModel)]='bug.inputStatus'>
-    <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
-  </select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-info"> Search</button></th>
-  <th>Priority</th>
-  <th>Severity</th>
-  <th>Type</th>
-  <th>BuildVersion</th>
-  <th>DeveloperId</th>
-  <th>TesterId</th>
-  <th>EtaDate
-  <th>SubmittedOn</th>
-</thead>
-<tbody>
-  <tr *ngFor ='let bug of bugArray'>
-    <td>{{bug.name}}</td>
-    <td>{{bug.product}}</td>
-    <td>{{bug.module}}</td>
-    <td>{{bug.projectId}}</td>
-    <td>{{bug.synopsis}}</td>
-    <td>{{bug.description}}</td>
-    <td>{{bug.status}}</td>
-    <td>{{bug.priority}}</td>
-    <td>{{bug.severity}}</td>
-    <td>{{bug.type}}</td>
-    <td>{{bug.buildVersion}}</td>
-    <td>{{bug.developerId}}</td>
-    <td>{{bug.testerId}}</td>
-    <td>{{bug.etaDate}}</td>
-    <td>{{bug.submittedOn}}</td>
-  </tr>
-</tbody>
-</table>
 </div>
+<div *ngIf="name.errors.required">
+  Name is required
 </div>
+<div *ngIf="name.errors.maxlength">
+  Maximum length is 15
+</div>
+

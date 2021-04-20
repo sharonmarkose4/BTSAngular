@@ -5,14 +5,25 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BugFormComponent } from './bug-form/bug-form.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FooterComponent } from './footer/footer.component';
+import { SearchbugComponent } from './searchbug/searchbug.component';
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes: Routes=[
+ {path: '',component: BugFormComponent},
+ {path: 'search',component: SearchbugComponent},
+]
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BugFormComponent
+    BugFormComponent,
+    FooterComponent,
+    SearchbugComponent
   ],
-  imports: [
+  imports: [RouterModule.forRoot(
+    appRoutes,
+    {enableTracing:true}
+  ),
     BrowserModule,FormsModule,HttpClientModule,
   ],
   providers: [],
