@@ -16,14 +16,14 @@ export class Bug{
   name:string='Bug 1';
   product:string='Product A';
   module:string='Module A';
-  projectId:string;
-  synopsis:string;
-  description:string;
-  priority:Priority;
-  status:Status;
-  type:TypeEnum;
-  severity:Severity;
-  buildVersion:string;
+  projectId:string="Project id";
+  synopsis:string="This is information about bug";
+  description:string='Bug details';
+  priority:Priority
+  status:Status
+  type:TypeEnum
+  severity:Severity
+  buildVersion:string="Version A";
   developerId:number;
   testerId:number;
   etaDate:Date;

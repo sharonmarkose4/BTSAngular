@@ -1,6 +1,7 @@
 <body class="jumbotron">
 <label>Search by Name</label><br>
-<input [(ngModel)]='bug.inputName'  class="form-control-sm"> <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button>
+<input [(ngModel)]='bug.inputName' name="name" class="form-control-sm" > <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button>
+
 <br>
 <label>Search by Status</label><br>
 <select id="status" [(ngModel)]='bug.inputStatus' class="form-control-sm">
@@ -13,8 +14,8 @@
   <th>Product</th>
   <th>Module</th>
   <th>ProjectId</th>
-  <th>Synopsis</th>
-  <th>Description</th>
+  <!-- <th>Synopsis</th>
+  <th>Description</th> -->
   <th>Status </th>
   <th>Priority</th>
   <th>Severity</th>
@@ -31,12 +32,12 @@
     <td>{{bug.product}}</td>
     <td>{{bug.module}}</td>
     <td>{{bug.projectId}}</td>
-    <td>{{bug.synopsis}}</td>
-    <td>{{bug.description}}</td>
-    <td>{{bug.status}}</td>
-    <td>{{bug.priority}}</td>
-    <td>{{bug.severity}}</td>
-    <td>{{bug.type}}</td>
+    <!-- <td>{{bug.synopsis}}</td>
+    <td>{{bug.description}}</td> -->
+    <td>{{bug.status | titlecase}}</td>
+    <td>{{bug.priority | titlecase}}</td>
+    <td>{{bug.severity | titlecase}}</td>
+    <td>{{bug.type | titlecase}}</td>
     <td>{{bug.buildVersion}}</td>
     <td>{{bug.developerId}}</td>
     <td>{{bug.testerId}}</td>
