@@ -3,7 +3,6 @@ import { Bug } from '../Bug';
 import { BugService } from '../bug.service'
 import { Status } from '../Bug';
 
-
 @Component({
   selector: 'app-searchbug',
   templateUrl: './searchbug.component.html',
@@ -14,6 +13,7 @@ export class SearchbugComponent implements OnInit {
   bugArray:any;
   statusValues=Object.values(Status).filter(x => typeof x==="string");
   constructor(private bugService: BugService) { }
+  //search bug by name
   getByName(name:string){
     if(name==null){
       alert("enter name");
@@ -27,10 +27,11 @@ export class SearchbugComponent implements OnInit {
       this.bugArray=response;
     },error=>{
       console.log(error);
-      alert("enter name");
+      alert("error");
      }
     )
   }
+  //search bug bu status
   getByStatus(status:Status){
     if(status==null){
       alert("enter status");
@@ -48,6 +49,7 @@ export class SearchbugComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //to display table on page load
     const observable=this.bugService.getAllBugs();
     observable.subscribe(response =>{
       console.log(response);

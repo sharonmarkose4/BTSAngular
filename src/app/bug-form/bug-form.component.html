@@ -1,5 +1,4 @@
 <div class="jumbotron">
-
 <div class="row">
 <div class="col">
 <label>Name*</label><br>
@@ -42,13 +41,19 @@
   <div *ngIf=" description.errors.minlength"> Minimum 10 characters</div>
 </div>
 <label>Status*</label><br>
-<select id="status" [(ngModel)]='bug.status' class="form-control-sm" required>
+<select id="status" [(ngModel)]='bug.status' #status="ngModel" class="form-control-sm" required>
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
 </select><br>
+<div *ngIf=" status.touched && status.invalid" class="alert alert-danger">
+  <div *ngIf=" status.errors.required"> Status is required</div>
+</div>
 <label>Priority*</label><br>
-<select id="priority" [(ngModel)]='bug.priority' class="form-control-sm" required>
+<select id="priority" [(ngModel)]='bug.priority' #priority="ngModel" class="form-control-sm" required>
   <option *ngFor="let value of priorityValues " [value]="value">{{value}}</option>
 </select><br>
+<div *ngIf=" priority.touched && priority.invalid" class="alert alert-danger">
+  <div *ngIf=" priority.errors.required"> Priority is required</div>
+  </div>
 <label>Type</label><br>
 <select id="type" [(ngModel)]='bug.type' class="form-control-sm" minlength>
   <option *ngFor="let value of typeValues " [value]="value">{{value}}</option>
