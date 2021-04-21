@@ -16,7 +16,7 @@ export class BugFormComponent implements OnInit {
   createMode:boolean;
   id:string;
   bug:Bug=new Bug();
-  bugArray:any;
+  bugArray:any=[];
   statusValues=Object.values(Status).filter(x => typeof x==="string");
   priorityValues=Object.values(Priority).filter(x => typeof x==="string");;
   typeValues=Object.values(TypeEnum).filter(x => typeof x==="string");;

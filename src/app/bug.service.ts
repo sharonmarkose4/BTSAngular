@@ -24,6 +24,9 @@ export class BugService {
   getByStatus(bugStatus:Status){
     return this.http.get(URL+'status/'+bugStatus);
   }
+  getByStatusAndName(bugStatus:Status,bugName:string){
+    return this.http.get(URL+'search?status='+bugStatus+"&name="+bugName);
+  }
   updateBug(bugId:String,bug:Bug){
     return this.http.put(URL+bugId,bug,{
       headers:{ "content-type":'application/json' },
