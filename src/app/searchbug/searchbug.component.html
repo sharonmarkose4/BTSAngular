@@ -1,12 +1,17 @@
 <body class="jumbotron">
+  <div class="row">
+  <div class="col-sm">
 <label>Search by Name</label><br>
-<input [(ngModel)]='bug.inputName' name="name" class="form-control-sm" > <button (click)="getByName(bug.inputName)" class="btn btn-info"> Search</button>
-
-<br>
+<input [(ngModel)]='bug.inputName' name="name" class="form-control" > <button (click)="getByName(bug.inputName)" class="btn btn-primary"> Search</button>
+</div>
+<div class="col-sm">
 <label>Search by Status</label><br>
-<select id="status" [(ngModel)]='bug.inputStatus' class="form-control-sm">
+<select id="status" [(ngModel)]='bug.inputStatus' class="form-control">
+  <!-- <option [ngValue]=statusValues[0]> {{statusValues[0]}}</option> -->
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
-</select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-info"> Search</button>
+</select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-primary"> Search</button>
+</div>
+</div>
 <h3>BUG INFORMATION</h3>
 <table>
   <thead>

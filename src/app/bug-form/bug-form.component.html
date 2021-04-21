@@ -1,81 +1,92 @@
 <div class="jumbotron">
+  <div *ngIf="!createMode">
+    <label>Enter Bug Id</label><br>
+    <input [(ngModel)]='bug.id' name="id" class="form-control" >
+</div>
 <div class="row">
 <div class="col">
 <label>Name*</label><br>
-<input [(ngModel)]='bug.name' id="name"  #name="ngModel" type="text" class="form-control-sm" required maxlength="15"><br>
-<label>Characters used {{bug.name.length}}/15</label><br>
+<input [(ngModel)]='bug.name' id="name"  #name="ngModel" type="text" class="form-control" required maxlength="100">
+<label>Characters used {{bug.name.length}}/100</label><br>
 <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
   <div *ngIf=" name.errors.required"> Name is required</div>
 </div>
 <label>Product*</label><br>
-<input [(ngModel)]='bug.product' #product="ngModel" type="text" class="form-control-sm" required maxlength="15"><br>
-<label>Characters used {{bug.product.length}}/15</label><br>
+<input [(ngModel)]='bug.product' #product="ngModel" type="text" class="form-control" required maxlength="20">
+<label>Characters used {{bug.product.length}}/20</label><br>
 <div *ngIf=" product.touched && product.invalid" class="alert alert-danger">
   <div *ngIf=" product.errors.required"> Product is required</div>
 </div>
 <label>Module*</label><br>
-<input [(ngModel)]='bug.module'  #module="ngModel" type="text" class="form-control-sm" required maxlength="15" ><br>
-<label>Characters used {{bug.module.length}}/15</label><br>
+<input [(ngModel)]='bug.module'  #module="ngModel" type="text" class="form-control" required maxlength="20" >
+<label>Characters used {{bug.module.length}}/20</label><br>
 <div *ngIf=" module.touched && module.invalid" class="alert alert-danger">
   <div *ngIf=" module.errors.required"> Module is required</div>
 </div>
 <label>Project Id*</label><br>
-<input [(ngModel)]='bug.projectId' #projectId="ngModel" type="text " class="form-control-sm" required  maxlength="15"><br>
-<label>Characters used {{bug.projectId.length}}/15</label><br>
+<input [(ngModel)]='bug.projectId' #projectId="ngModel" type="text " class="form-control" required  maxlength="20">
+<label>Characters used {{bug.projectId.length}}/20</label><br>
 <div *ngIf=" projectId.touched && projectId.invalid" class="alert alert-danger">
   <div *ngIf=" projectId.errors.required"> ProjectId is required</div>
 </div>
-</div>
-<div class="col">
 <label>Synopsis*</label><br>
-<input [(ngModel)]='bug.synopsis'  #synopsis="ngModel" type="text" class="form-control-sm" required maxlength="200"><br>
+<textarea [(ngModel)]='bug.synopsis'  #synopsis="ngModel"  class="form-control" rows="2" required maxlength="200"></textarea>
 <label>Characters used {{bug.synopsis.length}}/200</label><br>
 <div *ngIf=" synopsis.touched && synopsis.invalid" class="alert alert-danger">
   <div *ngIf=" synopsis.errors.required"> Synopsis is required</div>
 </div>
+</div>
+<div class="col">
 <label>Description*</label><br>
-<input [(ngModel)]='bug.description' #description="ngModel" type="text"  class="form-control-sm" required maxlength="200" minlength="10"><br>
+<textarea [(ngModel)]='bug.description' #description="ngModel"   class="form-control" rows="2" required maxlength="200" minlength="10"></textarea>
 <label>Characters used {{bug.description.length}}/200</label><br>
 <div *ngIf=" description.touched && description.invalid" class="alert alert-danger">
   <div *ngIf=" description.errors.required"> Description is required</div>
   <div *ngIf=" description.errors.minlength"> Minimum 10 characters</div>
 </div>
 <label>Status*</label><br>
-<select id="status" [(ngModel)]='bug.status' #status="ngModel" class="form-control-sm" required>
+<select id="status" [(ngModel)]='bug.status' #status="ngModel" class="form-control" required>
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
 </select><br>
 <div *ngIf=" status.touched && status.invalid" class="alert alert-danger">
   <div *ngIf=" status.errors.required"> Status is required</div>
 </div>
 <label>Priority*</label><br>
-<select id="priority" [(ngModel)]='bug.priority' #priority="ngModel" class="form-control-sm" required>
+<select  id="priority" [(ngModel)]='bug.priority'  #priority="ngModel" class="form-control" required>
   <option *ngFor="let value of priorityValues " [value]="value">{{value}}</option>
 </select><br>
 <div *ngIf=" priority.touched && priority.invalid" class="alert alert-danger">
   <div *ngIf=" priority.errors.required"> Priority is required</div>
   </div>
 <label>Type</label><br>
-<select id="type" [(ngModel)]='bug.type' class="form-control-sm" minlength>
+<select id="type" [(ngModel)]='bug.type' class="form-control">
   <option *ngFor="let value of typeValues " [value]="value">{{value}}</option>
 </select><br>
-</div>
-<div class="col">
 <label>Severity</label><br>
-<select id="severity" [(ngModel)]='bug.severity' class="form-control-sm">
+<select id="severity" [(ngModel)]='bug.severity' class="form-control">
   <option *ngFor="let value of severityValues " [value]="value">{{value}}</option>
 </select> <br>
+</div>
+<div class="col">
 <label>Developer Id</label><br>
-<input [(ngModel)]='bug.developerId' type="number" class=" form-control-sm"><br>
+<input [(ngModel)]='bug.developerId' type="number" class=" form-control"><br>
 <label>Tester Id</label><br>
-<input [(ngModel)]='bug.testerId' type="number" class="form-control-sm"><br>
+<input [(ngModel)]='bug.testerId' type="number" class="form-control"><br>
 <label>Eta</label><br>
-<input [(ngModel)]='bug.etaDate' type="date" class="form-control-sm"><br>
+<input [(ngModel)]='bug.etaDate' type="date" class="form-control"><br>
 <label>Build Version</label><br>
-<input [(ngModel)]='bug.buildVersion' type="text" class="form-control-sm" maxlength="15"><br>
-<label>Characters used {{bug.buildVersion.length}}/15</label><br>
+<input [(ngModel)]='bug.buildVersion' type="text" class="form-control" maxlength="20">
+<label>Characters used {{bug.buildVersion.length}}/20</label><br>
+<div *ngIf="createMode">
 <button (click)='save()' class="btn btn-primary" id="save">Save</button>
 </div>
+<div *ngIf="!createMode">
+<button (click)="updateBug(bug.id)" class="btn btn-primary" id="update" > Update</button>
 </div>
 </div>
+</div>
+
+
+
 
 
