@@ -2,15 +2,22 @@ table{
   border-collapse:collapse ;
   width: 100%;
   border: 1px solid black;
-}
+  }
 th,td{
   border: 1px solid black;
   text-align:left;
   padding:8px;
+
 }
 tr:nth-child(odd){
   background-color:lightseagreen;
 }
 tr, td :hover{
 background-color:lightskyblue;
+}
+.ellipses{
+  width:120px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
 }

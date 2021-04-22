@@ -31,7 +31,7 @@ export class SearchbugComponent implements OnInit {
      }
     )
   }
-  //search bug bu status
+  //search bug by status
   getByStatus(status:Status){
     if(status==null){
       alert("enter status");
@@ -59,9 +59,15 @@ export class SearchbugComponent implements OnInit {
         alert(" Bug with input status and name not found");
       }
       this.bugArray=response;
-
+    })
   }
-    )
+
+   //delete bug
+   deleteBug(bugId:String,index:number){
+    const observable=this.bugService.deleteBug(bugId);
+    observable.subscribe(response => {
+      this.bugArray.splice(index,1);
+  } )
   }
 
   ngOnInit(): void {

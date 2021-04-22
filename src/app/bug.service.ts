@@ -33,5 +33,8 @@ export class BugService {
       responseType: "text"
     });
   }
+  deleteBug(bugId:String){
+    return this.http.delete(URL+bugId);
+  }
 
 }

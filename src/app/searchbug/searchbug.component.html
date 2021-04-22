@@ -17,7 +17,8 @@
 </div>
 </div>
 <h3>BUG INFORMATION</h3>
-<table class="table">
+<div>
+  <table class="table table-hover">
   <thead>
   <th>Name</th>
   <th>Product</th>
@@ -36,13 +37,13 @@
   <th>SubmittedOn</th>
 </thead>
 <tbody>
-  <tr *ngFor ='let bug of bugArray'>
-    <td>{{bug.name}}</td>
+  <tr *ngFor ='let bug of bugArray; index as i'>
+    <td><p class="ellipses">{{bug.name}}</p></td>
     <td>{{bug.product}}</td>
     <td>{{bug.module}}</td>
     <td>{{bug.projectId}}</td>
-    <td>{{bug.synopsis}}</td>
-    <td >{{bug.description}}</td>
+    <td><p class="ellipses">{{bug.synopsis}}</p></td>
+    <td ><p class="ellipses">{{bug.description}}</p></td>
     <td>{{bug.status | titlecase}}</td>
     <td>{{bug.priority | titlecase}}</td>
     <td>{{bug.severity | titlecase}}</td>
@@ -52,7 +53,9 @@
     <td>{{bug.testerId}}</td>
     <td>{{bug.etaDate | date:'M/d/YY'}}</td>
     <td>{{bug.submittedOn | date:'M/d/YY'}}</td>
+    <td><button (click)="deleteBug(bug.id,i)">X</button></td>
   </tr>
 </tbody>
 </table>
+</div>
 </body>
