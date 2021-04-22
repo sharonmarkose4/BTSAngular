@@ -33,31 +33,36 @@ export class BugFormComponent implements OnInit {
     const promise=this.bugService.save(this.bug);
     promise.subscribe(response=>{
       console.log(response);
-      alert("bug added");
+      alert("Bug added");
       this.bugArray.push(Object.assign({},this.bug));
     },
     error=>{
       console.log(error);
-      alert("error happened");
+      alert("Error:fill al required fields");
 
     })
   }
   updateBug(bugId:String){
+    if(bugId==null){
+      alert("Enter bug id");
+    }
+    else{
     const promise=this.bugService.updateBug(bugId,this.bug);
     promise.subscribe(response=>{
       console.log(response);
-      alert("bug updated");
+      alert("Bug updated");
      },
     error=>{
       console.log(error);
-      alert("error happened");
+      alert("Error:Enter bug id");
 
     })
-
+  }
   }
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
     this.createMode=!this.id;
+
       }
 
 }

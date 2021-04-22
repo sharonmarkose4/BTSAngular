@@ -13,7 +13,6 @@ export enum Severity{
   HIGH,MEDIUM,LOW
 }
 export class Bug{
-  id:String;
   name:string='Bug 1';
   product:string='Product A';
   module:string='Module A';
@@ -22,8 +21,8 @@ export class Bug{
   description:string='';
   priority:Priority
   status:Status
-  type:TypeEnum
-  severity:Severity
+  type:TypeEnum=TypeEnum.COMPILE_TIME
+  severity:Severity=Severity.LOW
   buildVersion:string="";
   developerId:number;
   testerId:number;
@@ -31,5 +30,6 @@ export class Bug{
   submittedOn:Date=new Date();
   inputName:string;
   inputStatus:Status;
+  inputId:String;
 }
 
