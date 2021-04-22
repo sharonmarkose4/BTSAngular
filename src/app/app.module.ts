@@ -8,8 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SearchbugComponent } from './searchbug/searchbug.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 const appRoutes: Routes=[
- {path: '',component: BugFormComponent},
+ {path: '',component: HomeComponent},
+ {path: 'create',component: BugFormComponent},
  {path: 'search',component: SearchbugComponent},
  {path: 'update/:id',component: BugFormComponent},
 ]
@@ -19,7 +21,8 @@ const appRoutes: Routes=[
     HeaderComponent,
     BugFormComponent,
     FooterComponent,
-    SearchbugComponent
+    SearchbugComponent,
+    HomeComponent,
   ],
   imports: [RouterModule.forRoot(
     appRoutes,

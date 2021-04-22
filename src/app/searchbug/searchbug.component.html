@@ -7,18 +7,18 @@
 <div class="col-sm">
 <label>Search by Status</label><br>
 <select id="status" [(ngModel)]='bug.inputStatus' class="form-control">
-  <!-- <option [ngValue]=statusValues[0]> {{statusValues[0]}}</option> -->
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
 </select> <button (click)="getByStatus(bug.inputStatus)" class="btn btn-primary"> Search</button>
 </div>
-<div class="col-sm">
-  <label >Search by Status and Name</label><br>
-<button (click)="getByStatusAndName(bug.inputStatus,bug.inputName)" class="btn btn-primary"> Search</button>
 </div>
-</div>
-<h3>BUG INFORMATION</h3>
+  <!-- <label >Search by Status and Name</label><br> -->
+  <br>
+<button (click)="getByStatusAndName(bug.inputStatus,bug.inputName)" class="btn btn-primary"> Search by Status and Name</button>
+
+
+<h2 class="text-center">BUG INFORMATION</h2>
 <div>
-  <table class="table table-hover">
+  <table class="table table-hover table-responsive ">
   <thead>
   <th>Name</th>
   <th>Product</th>
@@ -53,7 +53,7 @@
     <td>{{bug.testerId}}</td>
     <td>{{bug.etaDate | date:'M/d/YY'}}</td>
     <td>{{bug.submittedOn | date:'M/d/YY'}}</td>
-    <td><button (click)="deleteBug(bug.id,i)">X</button></td>
+    <td><button (click)="deleteBug(bug.id,i)" class="btn btn-danger">X</button></td>
   </tr>
 </tbody>
 </table>
