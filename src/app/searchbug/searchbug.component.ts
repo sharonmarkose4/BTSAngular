@@ -18,6 +18,7 @@ export class SearchbugComponent implements OnInit {
     if(name==null){
       alert("enter name");
     }
+    else{
     const observable=this.bugService.getByName(name);
     observable.subscribe(response => {
       console.log(response);
@@ -27,15 +28,17 @@ export class SearchbugComponent implements OnInit {
       this.bugArray=response;
     },error=>{
       console.log(error);
-      alert("error");
+      alert("error: enter name");
      }
     )
   }
+}
   //search bug by status
   getByStatus(status:Status){
     if(status==null){
       alert("enter status");
     }
+    else{
     const observable=this.bugService.getByStatus(status);
     observable.subscribe(response => {
       console.log(response);
@@ -43,15 +46,15 @@ export class SearchbugComponent implements OnInit {
         alert(" Bug with input status not found");
       }
       this.bugArray=response;
-
-  }
-    )
+  } )
+}
   }
   //search by combination of status and name
   getByStatusAndName(status:Status,name:string){
     if(status==null || name==null){
       alert("enter both  status and name");
     }
+    else{
     const observable=this.bugService.getByStatusAndName(status,name);
     observable.subscribe(response => {
       console.log(response);
@@ -61,14 +64,19 @@ export class SearchbugComponent implements OnInit {
       this.bugArray=response;
     })
   }
+  }
 
    //delete bug
    deleteBug(bugId:String,index:number){
+    const confirmSelected=confirm("Delete bug?")
+    if(confirmSelected==true){
     const observable=this.bugService.deleteBug(bugId);
     observable.subscribe(response => {
       this.bugArray.splice(index,1);
+      alert('Bug deleted');
   } )
   }
+}
 
   ngOnInit(): void {
     //to display table on page load
