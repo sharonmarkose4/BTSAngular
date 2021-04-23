@@ -1,8 +1,5 @@
 <div class="jumbotron">
-  <div *ngIf="!createMode">
-    <label>Enter Bug Id</label><br>
-    <input [(ngModel)]='bug.id' name="id" class="form-control" >
-</div>
+  <div *ngIf="createMode">
 <div class="row">
 <div class="col">
 <label>Name*</label><br>
@@ -12,14 +9,14 @@
   <div *ngIf=" name.errors.required"> Name is required</div>
 </div>
 <label>Product*</label><br>
-<input [(ngModel)]='bug.product' #product="ngModel" type="text" class="form-control" required maxlength="20">
-<label>Characters used {{bug.product.length}}/20</label><br>
+<input [(ngModel)]='bug.product' #product="ngModel" type="text" class="form-control" required maxlength="25">
+<label>Characters used {{bug.product.length}}/25</label><br>
 <div *ngIf=" product.touched && product.invalid" class="alert alert-danger">
   <div *ngIf=" product.errors.required"> Product is required</div>
 </div>
 <label>Module*</label><br>
-<input [(ngModel)]='bug.module'  #module="ngModel" type="text" class="form-control" required maxlength="20" >
-<label>Characters used {{bug.module.length}}/20</label><br>
+<input [(ngModel)]='bug.module'  #module="ngModel" type="text" class="form-control" required maxlength="25" >
+<label>Characters used {{bug.module.length}}/25</label><br>
 <div *ngIf=" module.touched && module.invalid" class="alert alert-danger">
   <div *ngIf=" module.errors.required"> Module is required</div>
 </div>
@@ -45,7 +42,7 @@
   <div *ngIf=" description.errors.minlength"> Minimum 10 characters</div>
 </div>
 <label>Status*</label><br>
-<select id="status" [(ngModel)]='bug.status' #status="ngModel" class="form-control" required>
+<select id="status" [(ngModel)]='bug.status' #status="ngModel" class="form-control"  required>
   <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
 </select><br>
 <div *ngIf=" status.touched && status.invalid" class="alert alert-danger">
@@ -80,11 +77,75 @@
 <div *ngIf="createMode">
 <button (click)='save()' class="btn btn-primary" id="save">Save</button>
 </div>
+</div>
+</div>
+</div>
+<!-- only in update -->
 <div *ngIf="!createMode">
-<button (click)="updateBug(bug.id)" class="btn btn-primary" id="update" > Update</button>
+  <label>Enter Bug Name</label><br>
+    <input [(ngModel)]='bug2.inputName' name="bugname" class="form-control" >
+    <button (click)="getByName(bug2.inputName)" class="btn btn-primary" id="searchbug" > Search</button>
+      <div class="row">
+      <div class="col">
+        <!-- <input [(ngModel)]='bug2.id' id="id"  #name="ngModel" type="text" class="form-control"> -->
+      <label>Name*</label><br>
+      <input [(ngModel)]='bug2.name' id="name"  #name="ngModel" type="text" class="form-control" required maxlength="100">
+      <label>Characters used {{bug.name.length}}/100</label><br>
+      <label>Product*</label><br>
+      <input [(ngModel)]='bug2.product' #product="ngModel" type="text" class="form-control" required maxlength="25">
+      <label>Characters used {{bug.product.length}}/25</label><br>
+      <label>Module*</label><br>
+      <input [(ngModel)]='bug2.module'  #module="ngModel" type="text" class="form-control" required maxlength="25" >
+      <label>Characters used {{bug.module.length}}/25</label><br>
+     <label>Project Id*</label><br>
+      <input [(ngModel)]='bug2.projectId' #projectId="ngModel" type="text " class="form-control" required  maxlength="20">
+      <label>Characters used {{bug.projectId.length}}/20</label><br>
+      <label>Synopsis*</label><br>
+      <textarea [(ngModel)]='bug2.synopsis'  #synopsis="ngModel"  class="form-control" rows="2" required maxlength="200"></textarea>
+      <label>Characters used {{bug.synopsis.length}}/200</label><br>
+      </div>
+      <div class="col">
+      <label>Description*</label><br>
+      <textarea [(ngModel)]='bug2.description' #description="ngModel"   class="form-control" rows="2" required maxlength="200" minlength="10"></textarea>
+      <label>Characters used {{bug.description.length}}/200</label><br>
+      <div *ngIf=" description.touched && description.invalid" class="alert alert-danger">
+        <div *ngIf=" description.errors.minlength"> Minimum 10 characters</div>
+      </div>
+      <label>Status*</label><br>
+      <select id="status" [(ngModel)]='bug2.status' #status="ngModel" class="form-control"  required>
+        <option *ngFor="let value of statusValues" [value]="value">{{value}}</option>
+      </select><br>
+
+      <label>Priority*</label><br>
+      <select  id="priority" [(ngModel)]='bug2.priority'  #priority="ngModel" class="form-control" required>
+        <option *ngFor="let value of priorityValues " [value]="value">{{value}}</option>
+      </select><br>
+
+      <label>Type</label><br>
+      <select id="type" [(ngModel)]='bug2.type' class="form-control">
+        <option *ngFor="let value of typeValues " [value]="value">{{value}}</option>
+      </select><br>
+      <label>Severity</label><br>
+      <select id="severity" [(ngModel)]='bug2.severity' class="form-control">
+        <option *ngFor="let value of severityValues " [value]="value">{{value}}</option>
+      </select> <br>
+      </div>
+      <div class="col">
+      <label>Developer Id</label><br>
+      <input [(ngModel)]='bug2.developerId' type="number" class=" form-control"><br>
+      <label>Tester Id</label><br>
+      <input [(ngModel)]='bug2.testerId' type="number" class="form-control"><br>
+      <label>Eta</label><br>
+      <input [(ngModel)]='bug2.etaDate' type="date" class="form-control"><br>
+      <label>Build Version</label><br>
+      <input [(ngModel)]='bug2.buildVersion' type="text" class="form-control" maxlength="20">
+      <label>Characters used {{bug2.buildVersion.length}}/20</label><br>
+      <button (click)="updateBug(bug2.inputName,bug2.id)" class="btn btn-primary" id="update" > Update</button>
+    <!-- </div> -->
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 
 
 
