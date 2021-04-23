@@ -24,7 +24,8 @@ export class BugFormComponent implements OnInit {
   typeValues=Object.values(TypeEnum).filter(x => typeof x==="string");;
   severityValues=Object.values(Severity).filter(x => typeof x==="string");;
   constructor(private bugService: BugService,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute) {
+    }
   //create bug
   save(){
     const currentDate=new Date();
@@ -56,7 +57,7 @@ export class BugFormComponent implements OnInit {
      },
     error=>{
       console.log(error);
-      alert("Error");
+      alert("Error: Fill all required fields");
     })
   }
 }
