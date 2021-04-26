@@ -41,15 +41,21 @@ export class BugFormComponent implements OnInit {
     },
     error=>{
       console.log(error);
-      alert("Error:fill al required fields");
+      alert("Error:fill all required fields");
     })
   }
-  updateBug(bugName:String,bugId:String){
+
+   updateBug(bugName:String,bugId:String){
     if(bugName==null){
       alert("Enter bug name");
     }
     else{
-      console.log(this.bug2.id);
+    const currentDate=new Date();
+    const eta=new Date(this.bug2.etaDate);
+    if( eta<currentDate){
+      alert('ETA has to be future date');
+  }
+    console.log(this.bug2.id);
     const promise=this.bugService.updateBug(bugId,this.bug2);
     promise.subscribe(response=>{
       console.log(response);
@@ -57,10 +63,11 @@ export class BugFormComponent implements OnInit {
      },
     error=>{
       console.log(error);
-      alert("Error: Fill all required fields");
+      alert("Error");
     })
   }
 }
+
   getByName(name:string){
     if(name==null){
       alert("enter name");

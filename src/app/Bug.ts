@@ -24,7 +24,7 @@ export class Bug{
   status:Status;
   type:TypeEnum=TypeEnum.COMPILE_TIME;
   severity:Severity=Severity.LOW;
-  buildVersion:string="";
+  buildVersion:string="Version 1";
   developerId:number;
   testerId:number;
   etaDate:Date;

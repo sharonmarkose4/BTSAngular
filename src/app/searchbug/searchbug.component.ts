@@ -13,6 +13,13 @@ export class SearchbugComponent implements OnInit {
   bugArray:any;
   statusValues=Object.values(Status).filter(x => typeof x==="string");
   constructor(private bugService: BugService) { }
+  isReadMore = true
+  showSynopsis(synopsis:string){
+    alert(synopsis);
+  }
+  showDescription(description:string){
+    alert(description);
+  }
   //search bug by name
   getByName(name:string){
     if(name==null){

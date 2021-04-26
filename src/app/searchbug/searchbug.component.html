@@ -42,8 +42,10 @@
     <td>{{bug.product}}</td>
     <td>{{bug.module}}</td>
     <td>{{bug.projectId}}</td>
-    <td><p class="ellipses">{{bug.synopsis}}</p></td>
-    <td ><p class="ellipses">{{bug.description}}</p></td>
+    <td><p class="ellipses">{{bug.synopsis}}</p><button *ngIf="bug.synopsis.length>10"class="btn bg-transparent" type="button"  (click)="showSynopsis(bug.synopsis)">
+    {{ isReadMore ? 'Read More': 'Read Less'}}</button></td>
+    <td ><p class="ellipses">{{bug.description}}</p><button *ngIf="bug.description.length>10" class="btn bg-transparent"type="button" (click)="showDescription(bug.description)">
+      {{ isReadMore ? 'Read More': 'Read Less'}}</button></td>
     <td>{{bug.status | titlecase}}</td>
     <td>{{bug.priority | titlecase}}</td>
     <td>{{bug.severity | titlecase}}</td>
